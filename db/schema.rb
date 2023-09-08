@@ -10,19 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_08_221205) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_08_231339) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "experiences", force: :cascade do |t|
+    t.string "title", limit: 255, null: false
+    t.string "company_name", limit: 255, null: false
+    t.date "start_date", null: false
+    t.date "end_date"
+    t.text "function_performed", null: false
+    t.bigint "profile_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_experiences_on_profile_id"
+  end
+
   create_table "profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.date "birthdate"
-    t.string "phone", limit: 11
+    t.string "name", limit: 255, null: false
+    t.string "email", limit: 255, null: false
+    t.date "birthdate", null: false
+    t.string "phone", limit: 11, null: false
     t.string "links", default: [], array: true
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "experiences", "profiles"
 end
