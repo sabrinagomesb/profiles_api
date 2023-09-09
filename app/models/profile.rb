@@ -2,6 +2,7 @@
 
 class Profile < ApplicationRecord
   has_many :experiences, dependent: :destroy
+  has_many :studies, dependent: :destroy
 
   validates :name, :email, :birthdate, :phone, presence: true
   validates :name, length: { maximum: 255 }
