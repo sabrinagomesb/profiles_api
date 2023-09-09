@@ -4,7 +4,7 @@ class CreateProfiles < ActiveRecord::Migration[7.0]
       t.string :name, null: false, limit: 255
       t.string :email, null: false, limit: 255
       t.date :birthdate, null: false
-      t.string :phone, null:false, limit: 11
+      t.string :phone, null: false, limit: 11
       t.string :links, array: true, default: []
       t.string :role
 
