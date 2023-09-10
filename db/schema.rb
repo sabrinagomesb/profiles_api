@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_000823) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_09_003915) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "abilities", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_abilities_on_name", unique: true
+  end
 
   create_table "experiences", force: :cascade do |t|
     t.string "title", limit: 255, null: false
@@ -24,6 +32,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_000823) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_experiences_on_profile_id"
+  end
+
+  create_table "profile_abilities", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "ability_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ability_id"], name: "index_profile_abilities_on_ability_id"
+    t.index ["profile_id"], name: "index_profile_abilities_on_profile_id"
+  end
+
+  create_table "profile_teches", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "tech_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_profile_teches_on_profile_id"
+    t.index ["tech_id"], name: "index_profile_teches_on_tech_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -55,5 +81,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_000823) do
   end
 
   add_foreign_key "experiences", "profiles"
+  add_foreign_key "profile_abilities", "abilities"
+  add_foreign_key "profile_abilities", "profiles"
+  add_foreign_key "profile_teches", "profiles"
+  add_foreign_key "profile_teches", "teches"
   add_foreign_key "studies", "profiles"
 end
