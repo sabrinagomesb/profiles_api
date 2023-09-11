@@ -39,3 +39,11 @@ puts 'Inserting abilities...'
 FRONTEND_ABILITIES.each do |skill|
   Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:frontend], description: skill[:description])
 end
+
+BACKEND_ABILITIES.each do |skill|
+  Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:backend], description: skill[:description])
+end
+
+MOBILE_ABILITIES.each do |skill|
+  Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:mobile], description: skill[:description])
+end

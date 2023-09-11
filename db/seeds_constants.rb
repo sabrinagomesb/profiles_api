@@ -78,3 +78,39 @@ FRONTEND_ABILITIES = [
   { name: 'Gerenciamento de Estado', description: 'Experiência em gerenciamento de estado de aplicativos, como Redux ou MobX.' },
   { name: 'Animações', description: 'Habilidade em criar animações e transições suaves no frontend.' }
 ]
+
+BACKEND_ABILITIES = [
+  { name: 'Desenvolvimento de APIs', description: 'Habilidade em criar APIs robustas e escaláveis.' },
+  { name: 'Segurança de Dados', description: 'Conhecimento em práticas de segurança para proteger dados sensíveis.' },
+  { name: 'Performance', description: 'Otimização de consultas e desempenho de banco de dados.' },
+  { name: 'Gerenciamento de Banco de Dados', description: 'Experiência em bancos de dados relacionais ou NoSQL.' },
+  { name: 'Controle de Versão', description: 'Habilidade em usar sistemas de controle de versão, como Git.' },
+  { name: 'Testes de Backend', description: 'Experiência em escrever testes automatizados para o backend.' },
+  { name: 'Princípios SOLID', description: 'Compreensão dos princípios SOLID de design de software.' },
+  { name: 'Arquitetura de Software', description: 'Conhecimento em arquiteturas de software escaláveis.' },
+  { name: 'Padrões de Projeto', description: 'Familiaridade com padrões de projeto de software.' },
+  { name: 'Microserviços', description: 'Experiência em arquitetura de microserviços.' },
+  { name: 'Mensageria', description: 'Uso de sistemas de mensagens para comunicação entre serviços.' },
+  { name: 'Cache', description: 'Implementação de estratégias de cache para melhorar o desempenho.' },
+  { name: 'Segurança Web', description: 'Conhecimento em proteção contra ameaças web, como SQL Injection e XSS.' },
+  { name: 'Autenticação e Autorização', description: 'Implementação de sistemas de autenticação e autorização.' },
+  { name: 'Documentação de API', description: 'Criação de documentação clara e completa para APIs.' },
+  { name: 'Integração de Terceiros', description: 'Trabalho com integrações de APIs de terceiros.' },
+  { name: 'Resolução de Problemas', description: 'Habilidade em solucionar problemas complexos de backend.' },
+  { name: 'Escalabilidade', description: 'Design de sistemas que podem escalar horizontalmente.' }
+]
+
+MOBILE_ABILITIES = [
+  { name: 'Desenvolvimento de Aplicativos iOS', description: 'Experiência em criar aplicativos para dispositivos iOS usando Swift ou Objective-C.' },
+  { name: 'Desenvolvimento de Aplicativos Android', description: 'Habilidade em criar aplicativos Android usando Java ou Kotlin.' },
+  { name: 'Design Responsivo para Dispositivos Móveis', description: 'Conhecimento em criar designs que se adaptem a diferentes tamanhos de tela em dispositivos móveis.' },
+  { name: 'Desenvolvimento Cross-Platform', description: 'Experiência em criar aplicativos que funcionem em várias plataformas usando frameworks como Flutter ou React Native.' },
+  { name: 'Integração de APIs Móveis', description: 'Conhecimento em trabalhar com APIs externas em aplicativos móveis.' },
+  { name: 'Otimização de Desempenho Móvel', description: 'Experiência em otimizar o desempenho de aplicativos móveis para um carregamento mais rápido e uso eficiente de recursos.' },
+  { name: 'Testes de Aplicativos Móveis', description: 'Capacidade de escrever testes automatizados para aplicativos móveis.' },
+  { name: 'Segurança de Aplicativos Móveis', description: 'Conhecimento em práticas de segurança para proteger aplicativos móveis contra ameaças.' },
+  { name: 'Publicação em Lojas de Aplicativos', description: 'Experiência em enviar aplicativos para a App Store da Apple e Google Play Store.' },
+  { name: 'Interação com Hardware Móvel', description: 'Habilidade em acessar recursos de hardware em dispositivos móveis, como câmeras e sensores.' },
+  { name: 'Notificações Push', description: 'Conhecimento em implementar notificações push em aplicativos móveis.' },
+  { name: 'Controle de Versão', description: 'Uso de sistemas de controle de versão, como Git, para gerenciar o código-fonte do aplicativo móvel.' }
+]
