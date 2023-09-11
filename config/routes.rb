@@ -1,5 +1,9 @@
-Rails.application.routes.draw do
-  resources :profiles, only: [:create, :show, :index]
+# frozen_string_literal: true
 
-  resources :teches, only: [:index, :show]
+Rails.application.routes.draw do
+  resources :profiles, only: %i[create show index]
+
+  resources :teches, only: %i[index show], path: 'techs'
+
+  get '/abilities', to: 'abilities#index'
 end
