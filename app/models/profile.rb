@@ -3,7 +3,11 @@
 class Profile < ApplicationRecord
   has_many :experiences, dependent: :destroy
   has_many :studies, dependent: :destroy, inverse_of: :profile
+
+  has_many :profile_abilities, dependent: :destroy
   has_many :abilities, through: :profile_abilities
+
+  has_many :profile_techs, dependent: :destroy
   has_many :techs, through: :profile_techs
 
   accepts_nested_attributes_for :experiences, allow_destroy: true
