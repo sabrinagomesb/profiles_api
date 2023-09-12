@@ -1,7 +1,7 @@
 ---
 openapi: 3.0.1
 info:
-  title: API V1
+  title: PROFILE API
   version: v1
 paths:
   "/profiles":
@@ -12,9 +12,92 @@ paths:
           description: successful
     post:
       summary: create profile
+      parameters: []
       responses:
-        '200':
-          description: successful
+        '201':
+          description: profile created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profile:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    birthdate:
+                      type: string
+                      format: date
+                    phone:
+                      type: string
+                    links:
+                      type: array
+                      items:
+                        type: string
+                    role:
+                      type: string
+                    bio:
+                      type: string
+                    experiences_attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          company_name:
+                            type: string
+                          start_date:
+                            type: string
+                            format: date
+                          end_date:
+                            type: string
+                            format: date
+                          function_performed:
+                            type: string
+                        required:
+                        - title
+                        - company_name
+                        - start_date
+                        - end_date
+                        - function_performed
+                    studies_attributes:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          start_date:
+                            type: string
+                            format: date
+                          end_date:
+                            type: string
+                            format: date
+                        required:
+                        - title
+                        - start_date
+                        - end_date
+                    ability_ids:
+                      type: array
+                      items:
+                        type: integer
+                    tech_ids:
+                      type: array
+                      items:
+                        type: integer
+                  required:
+                  - name
+                  - email
+                  - birthdate
+                  - phone
+                  - role
+              required:
+              - profile
   "/profiles/{id}":
     parameters:
     - name: id
@@ -29,7 +112,7 @@ paths:
         '200':
           description: successful
 servers:
-- url: https://{defaultHost}
+- url: http://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: 127.0.0.1:3000/
