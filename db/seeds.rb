@@ -47,3 +47,11 @@ end
 MOBILE_ABILITIES.each do |skill|
   Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:mobile], description: skill[:description])
 end
+
+QA_ABILITIES.each do |skill|
+  Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:qa], description: skill[:description])
+end
+
+DESIGNER_ABILITIES.each do |skill|
+  Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:designer], description: skill[:description])
+end

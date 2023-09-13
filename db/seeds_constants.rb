@@ -114,3 +114,36 @@ MOBILE_ABILITIES = [
   { name: 'Notificações Push', description: 'Conhecimento em implementar notificações push em aplicativos móveis.' },
   { name: 'Controle de Versão', description: 'Uso de sistemas de controle de versão, como Git, para gerenciar o código-fonte do aplicativo móvel.' }
 ]
+
+QA_ABILITIES = [
+  { name: 'Testes de Software', description: 'Experiência em testar software para identificar bugs e problemas.' },
+  { name: 'Testes de Regressão', description: 'Capacidade de executar testes de regressão para garantir que as alterações não quebrem funcionalidades existentes.' },
+  { name: 'Testes Funcionais', description: 'Conhecimento em realizar testes funcionais para verificar se o software atende aos requisitos.' },
+  { name: 'Automação de Testes', description: 'Experiência em automatizar testes para aumentar a eficiência e a cobertura de testes.' },
+  { name: 'Testes de Aceitação do Usuário', description: 'Habilidade em conduzir testes de aceitação do usuário para validar se o software atende às necessidades do usuário final.' },
+  { name: 'Testes de Desempenho', description: 'Conhecimento em realizar testes de desempenho para avaliar a velocidade e a eficiência do software.' },
+  { name: 'Relatórios de Defeitos', description: 'Capacidade de relatar e documentar defeitos encontrados durante os testes.' },
+  { name: 'Testes de Segurança', description: 'Experiência em realizar testes de segurança para identificar vulnerabilidades no software.' },
+  { name: 'Testes Exploratórios', description: 'Habilidade em realizar testes exploratórios para descobrir problemas não documentados.' },
+  { name: 'Ferramentas de Teste', description: 'Conhecimento em usar ferramentas de teste, como Selenium, JIRA, ou similares.' },
+  { name: 'Metodologias de Teste', description: 'Experiência em seguir metodologias de teste, como Agile ou Scrum.' },
+  { name: 'Controle de Qualidade', description: 'Uso de práticas de controle de qualidade para garantir a entrega de software de alta qualidade.' }
+]
+
+DESIGNER_ABILITIES = [
+  { name: 'Design Gráfico', description: 'Habilidade em criar designs gráficos para impressão e mídia digital.' },
+  { name: 'UI/UX Design', description: 'Experiência em design de interface do usuário (UI) e experiência do usuário (UX) para aplicativos e websites.' },
+  { name: 'Ilustração Digital', description: 'Capacidade de criar ilustrações digitais usando ferramentas como Adobe Illustrator ou Procreate.' },
+  { name: 'Edição de Imagens', description: 'Conhecimento em edição de imagens usando softwares como Adobe Photoshop ou GIMP.' },
+  { name: 'Design de Logotipos', description: 'Experiência em criar logotipos e identidade visual de marcas.' },
+  { name: 'Web Design Responsivo', description: 'Habilidade em criar designs web que se adaptam a diferentes dispositivos e tamanhos de tela.' },
+  { name: 'Tipografia', description: 'Conhecimento em seleção e uso adequado de tipografia em designs.' },
+  { name: 'Design de Interface de Aplicativos', description: 'Capacidade de criar interfaces de usuário atraentes e funcionais para aplicativos.' },
+  { name: 'Ilustração Vetorial', description: 'Experiência em criar ilustrações vetoriais escaláveis.' },
+  { name: 'Design de Embalagens', description: 'Habilidade em criar designs de embalagens para produtos.' },
+  { name: 'Design de Experiência do Usuário (UX)', description: 'Experiência em melhorar a experiência geral do usuário em produtos e serviços.' },
+  { name: 'Design de Material de Marketing', description: 'Capacidade de criar material de marketing, como panfletos e brochuras.' },
+  { name: 'Arte Conceitual', description: 'Conhecimento em criar arte conceitual para jogos e mídia interativa.' },
+  { name: 'Design de Personagens', description: 'Experiência em criar personagens e figurinos para jogos e animações.' },
+  { name: 'Ferramentas de Design', description: 'Uso de ferramentas de design, como Adobe Creative Cloud, Sketch, Figma, etc.' }
+]
