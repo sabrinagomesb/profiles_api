@@ -102,6 +102,21 @@ paths:
                   - role
               required:
               - profile
+  "/abilities":
+    get:
+      summary: list abilities
+      tags:
+      - - Abilities
+      parameters:
+      - name: role
+        in: query
+        description: Role filter (e.g., frontend, backend, fullstack, mobile, designer,
+          qa)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
   "/profiles/{id}":
     parameters:
     - name: id
@@ -114,6 +129,26 @@ paths:
       summary: show profile
       tags:
       - - Profiles
+      responses:
+        '200':
+          description: successful
+  "/techs":
+    get:
+      summary: list techs
+      tags:
+      - - Techs
+      responses:
+        '200':
+          description: successful
+  "/techs/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+    get:
+      summary: show tech
+      tags:
+      - - Techs
       responses:
         '200':
           description: successful
