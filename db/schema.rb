@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_09_003915) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_12_152838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "abilities", force: :cascade do |t|
     t.string "name", limit: 255, null: false
-    t.string "type"
+    t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_abilities_on_name", unique: true
+    t.text "description"
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -61,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_09_003915) do
     t.string "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "bio", null: false
   end
 
   create_table "studies", force: :cascade do |t|

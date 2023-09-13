@@ -17,11 +17,14 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: localhost
-  port: 5432
+  port: <%= ENV['POSTGRES_PORT'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
@@ -84,5 +87,7 @@ test:
 production:
   <<: *default
   database: profiles_api_production
-  username: profiles_api
-  password: <%= ENV["PROFILES_API_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
+  # username: profiles_api
+  # password: <%= ENV["PROFILES_API_DATABASE_PASSWORD"] %>
