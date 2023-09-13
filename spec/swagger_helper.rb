@@ -21,13 +21,18 @@ RSpec.configure do |config|
         title: 'PROFILE API',
         version: 'v1'
       },
-      paths: {},
+      paths: {
+        '/profiles': {
+          tags: ['profiles']
+        }
+      },
       servers: [
         {
-          url: 'http://{defaultHost}',
+          url: 'https://{default}/',
           variables: {
-            defaultHost: {
-              default: '127.0.0.1:3000/'
+            default: {
+              default: 'profile-api-1qjr.onrender.com',
+              description: 'render.com'
             }
           }
         }

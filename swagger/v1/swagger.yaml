@@ -7,11 +7,15 @@ paths:
   "/profiles":
     get:
       summary: list profiles
+      tags:
+      - - Profiles
       responses:
         '200':
           description: successful
     post:
       summary: create profile
+      tags:
+      - - Profiles
       parameters: []
       responses:
         '201':
@@ -108,11 +112,14 @@ paths:
         type: string
     get:
       summary: show profile
+      tags:
+      - - Profiles
       responses:
         '200':
           description: successful
 servers:
-- url: http://{defaultHost}
+- url: https://{default}/
   variables:
-    defaultHost:
-      default: 127.0.0.1:3000/
+    default:
+      default: profile-api-1qjr.onrender.com
+      description: render.com

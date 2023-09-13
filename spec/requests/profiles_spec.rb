@@ -1,8 +1,9 @@
 require 'swagger_helper'
 
-RSpec.describe 'profiles', type: :request do
+RSpec.describe 'Profiles', type: :request do
   path '/profiles' do
     get('list profiles') do
+      tags ['Profiles']
       response(200, 'successful') do
         after do |example|
           example.metadata[:response][:content] = {
@@ -16,6 +17,7 @@ RSpec.describe 'profiles', type: :request do
     end
 
     post('create profile') do
+      tags ['Profiles']
       response(201, 'profile created') do
         consumes 'application/json'
         parameter name: :profile, in: :body, schema: {
@@ -94,10 +96,10 @@ RSpec.describe 'profiles', type: :request do
   end
 
   path '/profiles/{id}' do
-    # You'll want to customize the parameter types...
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show profile') do
+      tags ['Profiles']
       response(200, 'successful') do
         let(:id) { '123' }
 
