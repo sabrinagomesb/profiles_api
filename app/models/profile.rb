@@ -13,7 +13,7 @@ class Profile < ApplicationRecord
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :studies, allow_destroy: true
 
-  validates :name, :email, :birthdate, :phone, presence: true
+  validates :name, :email, :birthdate, :phone, :bio, presence: true
 
   validates :name, length: { maximum: 255 }
   validates :email, length: { maximum: 255 }
