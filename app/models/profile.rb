@@ -14,9 +14,13 @@ class Profile < ApplicationRecord
   accepts_nested_attributes_for :studies, allow_destroy: true
 
   validates :name, :email, :birthdate, :phone, presence: true
+
   validates :name, length: { maximum: 255 }
   validates :email, length: { maximum: 255 }
   validates :phone, length: { is: 11 }
+
+  validates :phone, format: { with: /\A\d+\z/, message: 'must contain only numbers' }
+
   validates :role, inclusion: { in: %w[frontend backend fullstack mobile designer qa] }
 
   enum :role, {
