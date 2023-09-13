@@ -45,13 +45,10 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
 end
 
-gem 'rswag'
-
-
 group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
 
-
-
+gem 'rswag'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
