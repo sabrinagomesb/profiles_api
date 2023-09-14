@@ -9,7 +9,7 @@ class Ability < ApplicationRecord
   private
 
   def create_fullstack_ability
-    puts name
-    Ability.find_or_create_by(name:, role: 'fullstack', description:)
+    puts "Add #{name} to fullstack role"
+    Ability.find_or_create_by(name:, role: 'fullstack', description:) if role == 'frontend' || role == 'backend'
   end
 end
