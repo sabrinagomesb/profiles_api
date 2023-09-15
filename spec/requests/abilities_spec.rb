@@ -12,6 +12,16 @@ RSpec.describe 'abilities', type: :request do
                 required: true, example: 'frontend'
 
       response(200, 'successful') do
+        example 'application/json', :example, [
+          {
+            "id": 2,
+            "name": "Design de Interface de Usuário (UI)",
+            "role": "fullstack",
+            "created_at": "2023-09-15T04:46:58.949Z",
+            "updated_at": "2023-09-15T04:46:58.949Z",
+            "description": "Habilidade em criar interfaces de usuário atraentes e funcionais."
+          }
+        ]
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -30,6 +40,14 @@ RSpec.describe 'abilities', type: :request do
     get('show ability by id') do
       tags ['Abilities']
       response(200, 'successful') do
+        example 'application/json', :example, {
+          "id": 2,
+          "name": "Design de Interface de Usuário (UI)",
+          "role": "fullstack",
+          "created_at": "2023-09-15T04:46:58.949Z",
+          "updated_at": "2023-09-15T04:46:58.949Z",
+          "description": "Habilidade em criar interfaces de usuário atraentes e funcionais."
+        }
         let(:id) { '1' }
 
         after do |example|

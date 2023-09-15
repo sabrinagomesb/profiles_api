@@ -1,7 +1,7 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-09-15T02:58:17.044Z",
+  "__export_date": "2023-09-15T05:20:04.210Z",
   "__export_source": "insomnia.desktop.app:v2023.5.7",
   "resources": [
     {
@@ -75,7 +75,7 @@
     {
       "_id": "req_28b7096bf6cd4f159a2be83447cb6f4d",
       "parentId": "fld_9ad835b345e74e60bdb0a31c0a7f4d8a",
-      "modified": 1694745714188,
+      "modified": 1694753837387,
       "created": 1694570006308,
       "url": "{{ _.baseURL }}/profiles",
       "name": "profile",
@@ -83,7 +83,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"profile\": {\n    \"name\": \"Larissa\",\n    \"email\": \"larissa@example.com\",\n    \"birthdate\": \"2000-01-01\",\n    \"phone\": \"85988556677\",\n    \"role\": \"frontend\",\n    \"bio\": \"Uma desenvolvedora que se garante muito!\",\n\t\t\"links\": [\"www.github.com\", \"www.google.com\"],\n\t\t\"city_id\": \"678\",\n    \"experiences_attributes\": [\n      {\n        \"title\": \"Desenvolvedor Web Frontend\",\n        \"company_name\": \"TechCo\",\n        \"start_date\": \"2021-03-01\",\n        \"end_date\": \"2022-06-30\",\n        \"function_performed\": \"Desenvolver com React\"\n      },\n      {\n        \"title\": \"Estagiário de Desenvolvimento Web\",\n        \"company_name\": \"WebTech\",\n        \"start_date\": \"2020-01-15\",\n        \"end_date\": \"2020-12-31\",\n        \"function_performed\": \"Desenvolver com React\"\n      }\n    ],\n    \"studies_attributes\": [\n      {\n        \"title\": \"Bacharelado em Ciência da Computação\",\n        \"start_date\": \"2018-09-01\",\n        \"end_date\": \"2022-06-30\"\n      },\n      {\n        \"title\": \"Curso de Desenvolvimento Web Avançado\",\n        \"start_date\": \"2019-02-15\",\n        \"end_date\": \"2019-06-30\"\n      }\n    ],\n    \"ability_ids\": [1,2,3],  \n\t\t\"softskill_ids\": [1,2,3],\n    \"tech_ids\": [1,2,3]      \n  }\n}\n"
+        "text": "{\n  \"profile\": {\n    \"name\": \"Sabrina\",\n    \"email\": \"sabrina@example.com\",\n    \"birthdate\": \"1991-07-27\",\n    \"phone\": \"85988556677\",\n    \"role\": \"fullstack\",\n    \"bio\": \"Uma desenvolvedora fullstack que atualmente está se dedicando a Ruby on Rails, feliz com a ideia de ser fullstack\",\n\t\t\"links\": [\"www.github.com\", \"www.google.com\"],\n\t\t\"city_id\": \"678\",\n    \"experiences_attributes\": [\n      {\n        \"title\": \"Desenvolvedor Web Fullstack\",\n        \"company_name\": \"TechCo\",\n        \"start_date\": \"2021-03-01\",\n        \"function_performed\": \"Desenvolver Rails atuando na concepção de projetos\"\n      },\n      {\n        \"title\": \"Estagiário de Desenvolvimento Web\",\n        \"company_name\": \"WebTech\",\n        \"start_date\": \"2020-01-15\",\n        \"end_date\": \"2020-12-31\",\n        \"function_performed\": \"Desenvolver com React\"\n      }\n    ],\n    \"studies_attributes\": [\n      {\n        \"title\": \"Bacharelado em Ciência da Computação\",\n\t\t\t\t\"institution\": \"Raro Academy\",\n\t\t\t\t\"link\": \"www.raroacademy.com.br\",\n        \"start_date\": \"2018-09-01\",\n        \"end_date\": \"2022-06-30\"\n      },\n      {\n        \"title\": \"Curso de Desenvolvimento Web Avançado\",\n\t\t\t\t\"institution\": \"Raro Academy\",\n\t\t\t\t\"link\": \"www.raroacademy.com.br\"\n      }\n    ],\n    \"ability_ids\": [1,3],  \n\t\t\"softskill_ids\": [1,2,3],\n    \"tech_ids\": [3]      \n  }\n}\n"
       },
       "parameters": [],
       "headers": [
@@ -104,9 +104,9 @@
     {
       "_id": "req_c2023a2b398c4d0383ba92666bbe6cfc",
       "parentId": "fld_2116c62e7a234ffbb5d1b95c1a3ee4af",
-      "modified": 1694742886007,
+      "modified": 1694754708794,
       "created": 1694734809843,
-      "url": "{{ _.baseURL }}/softskills/1",
+      "url": "{{ _.baseURL }}/abilities?role=frontend",
       "name": "abilities",
       "description": "",
       "method": "GET",
@@ -197,9 +197,9 @@
     {
       "_id": "req_b10521851f6e4e579eac49e3f65ffddf",
       "parentId": "fld_0ab69698fd8a4d8fbf823c7d51a1f901",
-      "modified": 1694742883578,
+      "modified": 1694754690176,
       "created": 1694742833915,
-      "url": "{{ _.baseURL }}/techs/1",
+      "url": "{{ _.baseURL }}/softskills/1",
       "name": "softskill",
       "description": "",
       "method": "GET",
@@ -313,9 +313,9 @@
     {
       "_id": "req_63f99cca82134edcbb7e607aba9d64c4",
       "parentId": "fld_642592ffc0a549129bea0f4a622a290d",
-      "modified": 1694745636594,
+      "modified": 1694755014850,
       "created": 1694745423657,
-      "url": "{{ _.baseURL }}/states/6/cities/678",
+      "url": "{{ _.baseURL }}/states/6",
       "name": "state",
       "description": "",
       "method": "GET",

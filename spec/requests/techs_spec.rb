@@ -5,6 +5,14 @@ RSpec.describe 'techs', type: :request do
     get('list techs') do
       tags ['Techs']
       response(200, 'successful') do
+        example 'application/json', :example, [
+          {
+            "id": 1,
+            "name": 'Ruby on Rails',
+            "created_at": '2023-09-15T04:46:58.560Z',
+            "updated_at": '2023-09-15T04:46:58.560Z'
+          }
+        ]
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
@@ -23,6 +31,13 @@ RSpec.describe 'techs', type: :request do
     get('show tech') do
       tags ['Techs']
       response(200, 'successful') do
+        example 'application/json', :example, {
+          "id": 1,
+          "name": 'Ruby on Rails',
+          "created_at": '2023-09-15T04:46:58.560Z',
+          "updated_at": '2023-09-15T04:46:58.560Z'
+        }
+
         let(:id) { '123' }
 
         after do |example|
