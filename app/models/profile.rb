@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'prawn'
 
 class Profile < ApplicationRecord
   has_many :experiences, dependent: :destroy
@@ -31,4 +32,44 @@ class Profile < ApplicationRecord
     designer: 'designer',
     qa: 'qa'
   }
+
+  def to_pdf
+    name = self.name
+    email = self.email
+    birthdate = self.birthdate
+    phone = self.phone
+    links = self.links
+    role = self.role
+    bio = self.bio
+
+    pdf = Prawn::Document.new(page_size: 'A4', page_layout: :portrait) do
+      text "Name: #{name}"
+      text "Email: #{email}"
+      text "Birthdate: #{birthdate}"
+      text "Phone: #{phone}"
+      text "Links: #{links}"
+      move_down 5
+      text "Role: #{role}"
+      text "Bio: #{bio}"
+      move_down 10
+      text 'Experiences:', style: :bold
+      # experiences.each do |experience|
+      #   text "Title: #{experience.title}"
+      #   text "Company: #{experience.company_name}"
+      #   text "Start date: #{experience.start_date}"
+      #   text "End date: #{experience.end_date}"
+      #   text "Function performed: #{experience.function_performed}"
+      #   move_down 5
+      # end
+      move_down 10
+      text 'Studies:', style: :bold
+      # studies.each do |study|
+      #   text "Title: #{study.title}"
+      #   text "Start date: #{study.start_date}"
+      #   text "End date: #{study.end_date}"
+      #   move_down 5
+      # end
+    end
+    pdf.render
+  end
 end
