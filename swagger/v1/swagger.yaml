@@ -110,10 +110,31 @@ paths:
       parameters:
       - name: role
         in: query
+        enum:
+        - frontend
+        - backend
+        - fullstack
+        - mobile
+        - designer
+        - qa
         description: Role filter (e.g., frontend, backend, fullstack, mobile, designer,
           qa)
+        required: true
+        example: frontend
         schema:
           type: string
+      responses:
+        '200':
+          description: successful
+  "/abilities/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+    get:
+      summary: show ability by id
+      tags:
+      - - Abilities
       responses:
         '200':
           description: successful
@@ -146,7 +167,7 @@ paths:
       in: path
       required: true
     get:
-      summary: show tech
+      summary: show tech by id
       tags:
       - - Techs
       responses:
