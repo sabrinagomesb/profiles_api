@@ -177,6 +177,53 @@ paths:
       responses:
         '200':
           description: successful
+  "/states":
+    get:
+      summary: list states
+      tags:
+      - - State/City
+      responses:
+        '200':
+          description: successful
+  "/states/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+    get:
+      summary: show state by id
+      tags:
+      - - State/City
+      responses:
+        '200':
+          description: successful
+  "/states/{state_id}/cities":
+    parameters:
+    - name: state_id
+      in: path
+      required: true
+    get:
+      summary: list cities from state
+      tags:
+      - - State/City
+      responses:
+        '200':
+          description: successful
+  "/states/{state_id}/cities/{id}":
+    parameters:
+    - name: state_id
+      in: path
+      required: true
+    - name: id
+      in: path
+      required: true
+    get:
+      summary: show city from state
+      tags:
+      - - State/City
+      responses:
+        '200':
+          description: successful
   "/techs":
     get:
       summary: list techs

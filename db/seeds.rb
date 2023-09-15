@@ -70,7 +70,7 @@ end
 
 puts 'Inserting profiles...'
 cities = City.all
-10.times do
+5.times do
   Profile.find_or_create_by(
     name: Faker::Name.name,
     bio: Faker::Lorem.paragraph,
