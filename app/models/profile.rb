@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'prawn'
 
 class Profile < ApplicationRecord
@@ -24,7 +25,9 @@ class Profile < ApplicationRecord
   validates :name, length: { minimum: 4 }
   validates :email, length: { maximum: 255 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :birthdate, format: { with: /\A\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\z/, message: 'must be in the format YYYY-MM-DD' }
+  validates :birthdate,
+            format: { with: /\A\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\z/,
+                      message: 'must be in the format YYYY-MM-DD' }
   validates :phone, length: { is: 11 }
   validates :phone, format: { with: /\A\d+\z/, message: 'must contain only numbers' }
   validates :role, inclusion: { in: :role }
@@ -47,34 +50,103 @@ class Profile < ApplicationRecord
     links = self.links
     role = self.role
     bio = self.bio
+    experiences = self.experiences
+    studies = self.studies
+    city = self.city.name
+    state = self.city.state.name
+    abilities = self.abilities
+    techs = self.techs
+    softskills = self.softskills
 
-    pdf = Prawn::Document.new(page_size: 'A4', page_layout: :portrait) do
-      text "Name: #{name}"
-      text "Email: #{email}"
-      text "Birthdate: #{birthdate}"
-      text "Phone: #{phone}"
-      text "Links: #{links}"
-      move_down 5
-      text "Role: #{role}"
-      text "Bio: #{bio}"
+    p links
+
+    pdf = Prawn::Document.new(
+      page_size: 'A4',
+      page_layout: :portrait,
+      margin: [50, 40, 40, 40]
+    ) do
+      default_leading 6
+      text "PROFILE - #{role.upcase} ", size: 24, style: :bold, leading: 0
+      text name.upcase.to_s, size: 18, style: :bold
+      stroke_horizontal_rule
+      move_down 15
+
+      bounding_box([bounds.left, cursor], width: bounds.width) do
+        text bio, style: :italic, align: :center
+      end
+
+      column_box([0, cursor], columns: 2, width: bounds.width) do
+        text "<b>EMAIL</b>: #{email}", inline_format: true
+        move_up 20
+        bounding_box([bounds.right - 50, cursor], width: 300) do
+          text "<b>TELEFONE</b>: #{phone}", inline_format: true, align: :right
+        end
+        text "<b>DATA DE NASCIMENTO</b>: #{birthdate}", inline_format: true
+        # text "<b>CIDADE</b>: #{city}", inline_format: true
+        # text "<b>ESTADO</b>: #{state}", inline_format: true, aling: :right
+        # put city and state in the same line
+        text "<b>CIDADE</b>: #{city} - #{state}", inline_format: true
+      end
+
+      if links.present?
+        text 'LINKS:', style: :bold
+        links.each do |link|
+          text "• #{link}"
+        end
+      end
+
       move_down 10
-      text 'Experiences:', style: :bold
-      # experiences.each do |experience|
-      #   text "Title: #{experience.title}"
-      #   text "Company: #{experience.company_name}"
-      #   text "Start date: #{experience.start_date}"
-      #   text "End date: #{experience.end_date}"
-      #   text "Function performed: #{experience.function_performed}"
-      #   move_down 5
-      # end
+      text 'EXPERIÊNCIAS:', size: 18, style: :bold
+      if experiences.empty?
+        text ' •  Ainda em busca da minha primeira experiência.', style: :italic
+      end
+      experiences.each do |experience|
+        text experience.title, size: 14, style: :bold
+        text "Empresa: #{experience.company_name}"
+        text "Data Inicio: #{experience.start_date}"
+        if experience.end_date.present?
+          text "Data Fim: #{experience.end_date}"
+        else
+          text ' •  Está é minha experiência atual', style: :italic
+        end
+        text "Função: #{experience.function_performed}"
+        move_down 5
+      end
       move_down 10
-      text 'Studies:', style: :bold
-      # studies.each do |study|
-      #   text "Title: #{study.title}"
-      #   text "Start date: #{study.start_date}"
-      #   text "End date: #{study.end_date}"
-      #   move_down 5
-      # end
+
+      text 'ESTUDOS:', size: 18, style: :bold
+      if studies.empty?
+        text ' •  No momento sem estudos para cadastro.', style: :italic
+      end
+      studies.each do |study|
+        text study.title, style: :bold
+        text "Instituição: #{study.institution}"
+        text "Link: #{study.link}"
+        text "Data Inicio: #{study.start_date}"
+        if study.end_date.present?
+          text "Data Fim: #{study.end_date}"
+        else
+          text ' •  Em andamento.', style: :italic
+        end
+      end
+      move_down 10
+      # start new page if the content is bigger than the page
+      start_new_page if cursor < 50
+
+      text 'HABILIDADES:', size: 18, style: :bold
+      abilities.each do |ability|
+        text "• #{ability.name};"
+      end
+      move_down 10
+      text 'TECNOLOGIAS:', size: 18, style: :bold
+      techs.each do |tech|
+        text "• #{tech.name};"
+      end
+      move_down 10
+      text 'SOFTSKILLS:', size: 18, style: :bold
+      softskills.each do |softskill|
+        text "• #{softskill.name};"
+      end
     end
     pdf.render
   end
