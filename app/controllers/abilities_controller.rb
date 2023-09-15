@@ -1,7 +1,19 @@
+# frozen_string_literal: true
+
 class AbilitiesController < ApplicationController
   def index
-    role = params[:role] # Obtenha o parâmetro 'role' da solicitação
-    abilities = Ability.where(role: role) # Filtrar habilidades com base no parâmetro 'role'
+    abilities = if params[:role]
+                  Ability.where(role: params[:role])
+                else
+                  Ability.all
+                end
+
     render json: abilities
+  end
+
+  def show
+    ability = Ability.find(params[:id])
+
+    render json: ability
   end
 end

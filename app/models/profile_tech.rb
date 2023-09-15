@@ -4,5 +4,4 @@ class ProfileTech < ApplicationRecord
 
   validates :profile, :tech, presence: true
   validates :profile, uniqueness: { scope: :tech }
-
 end
