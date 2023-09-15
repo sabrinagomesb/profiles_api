@@ -3,7 +3,7 @@ require 'swagger_helper'
 RSpec.describe 'Profiles', type: :request do
   path '/health' do
     get 'Health check' do
-      tags 'health'
+      tags 'Health'
       produces 'application/json'
 
       response '200', 'Health check' do

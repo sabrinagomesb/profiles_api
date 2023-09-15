@@ -8,7 +8,7 @@ paths:
     get:
       summary: Health check
       tags:
-      - health
+      - Health
       responses:
         '200':
           description: Health check
@@ -510,5 +510,5 @@ servers:
 - url: https://{default}/
   variables:
     default:
-      default: profile-api-1qjr.onrender.com
+      default: https://profile-api-vyah.onrender.com
       description: render.com

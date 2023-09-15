@@ -34,7 +34,7 @@ RSpec.configure do |config|
           url: 'https://{default}/',
           variables: {
             default: {
-              default: 'profile-api-1qjr.onrender.com',
+              default: ENV['BASE_URL'] || 'localhost:3000',
               description: 'render.com'
             }
           }
