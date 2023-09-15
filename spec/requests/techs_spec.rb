@@ -36,4 +36,24 @@ RSpec.describe 'techs', type: :request do
       end
     end
   end
+
+  path '/techs/{id}' do
+    parameter name: 'id', in: :path
+
+    get('show tech by id') do
+      tags ['Techs']
+      response(200, 'successful') do
+        let(:id) { '123' }
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
 end
