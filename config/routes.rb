@@ -20,4 +20,7 @@ Rails.application.routes.draw do
       get :download
     end
   end
+
+  root to: redirect('/api-docs')
+  match '*path', to: redirect('/api-docs'), via: :all
 end
