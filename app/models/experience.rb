@@ -7,7 +7,6 @@ class Experience < ApplicationRecord
   validates :end_date, format: { with: /\A\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\z/, message: 'must be in the format YYYY-MM-DD' }, allow_blank: true
   validates :function_performed, length: { maximum: 500 }
 
-  # validates :start_date, :end_date, format: { with: /\A\d{4}-\d{2}-\d{2}\z/, message: 'must be in the format YYYY-MM-DD' }
   validate :start_date_cannot_be_greater_than_end_date
 
   def start_date_cannot_be_greater_than_end_date

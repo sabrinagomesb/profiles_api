@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
+  before_action :find_profile, only: %i[download show]
+
   def download
-    profile = Profile.find(params[:id])
-    send_data(profile.to_pdf, filename: 'profile.pdf', disposition: 'inline')
+    send_data(@profile.to_pdf, filename: 'profile.pdf', disposition: 'inline')
   end
 
   def index
@@ -10,25 +11,20 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:id])
     render json: @profile, include: %i[experiences studies abilities softskills techs]
   end
 
   def create
-    @profile = Profile.new(profile_params.except(:studies_attributes))
+    @profile = Profile.new(profile_params)
 
-    unless valid_softskill_count?(profile_params[:softskill_ids])
-      return render json: { error: 'You must select 3 softskills' }, status: :unprocessable_entity
-    end
-
-    if @profile.save
-      studies_attributes = profile_params[:studies_attributes]
-      studies_attributes.each { |study| study[:profile_id] = @profile.id }
-      @profile.studies.create(studies_attributes)
-
-      render json: @profile, include: %i[experiences studies abilities softskills techs], status: :created
+    if valid_softskill_count?(profile_params[:softskill_ids])
+      if @profile.save
+        render json: @profile, include: %i[experiences studies abilities softskills techs], status: :created
+      else
+        render json: @profile.errors, status: :unprocessable_entity
+      end
     else
-      render json: @profile.errors, status: :unprocessable_entity
+      render json: { error: 'You must select 3 softskills' }, status: :unprocessable_entity
     end
   end
 
@@ -38,7 +34,7 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(
       :name, :email, :birthdate, :phone, :links, :role, :bio, :city_id,
       experiences_attributes: %i[title company_name start_date end_date function_performed _destroy],
-      studies_attributes: %i[title start_date end_date _destroy],
+      studies_attributes: %i[title institution link start_date end_date _destroy],
       ability_ids: [],
       softskill_ids: [],
       tech_ids: []
@@ -48,5 +44,9 @@ class ProfilesController < ApplicationController
   def valid_softskill_count?(softskill_ids)
     expected_count = 3
     softskill_ids.count == expected_count
+  end
+
+  def find_profile
+    @profile = Profile.find(params[:id])
   end
 end
