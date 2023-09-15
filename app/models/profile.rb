@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Profile < ApplicationRecord
+  belongs_to :city
+
   has_many :experiences, dependent: :destroy
   has_many :studies, dependent: :destroy, inverse_of: :profile
 

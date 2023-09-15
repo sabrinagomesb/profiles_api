@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_15_013721) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_15_022855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_013721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.bigint "state_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
   create_table "experiences", force: :cascade do |t|
@@ -71,10 +79,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_013721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "bio", null: false
+    t.bigint "city_id", null: false
+    t.index ["city_id"], name: "index_profiles_on_city_id"
   end
 
   create_table "softskills", force: :cascade do |t|
     t.string "name", limit: 255, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string "name", limit: 255, null: false
+    t.string "acronym", limit: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,6 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_013721) do
     t.index ["name"], name: "index_teches_on_name", unique: true
   end
 
+  add_foreign_key "cities", "states"
   add_foreign_key "experiences", "profiles"
   add_foreign_key "profile_abilities", "abilities"
   add_foreign_key "profile_abilities", "profiles"
@@ -103,5 +121,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_15_013721) do
   add_foreign_key "profile_softskills", "softskills"
   add_foreign_key "profile_teches", "profiles"
   add_foreign_key "profile_teches", "teches"
+  add_foreign_key "profiles", "cities"
   add_foreign_key "studies", "profiles"
 end

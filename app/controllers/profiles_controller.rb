@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :name, :email, :birthdate, :phone, :links, :role, :bio,
+      :name, :email, :birthdate, :phone, :links, :role, :bio, :city_id,
       experiences_attributes: %i[title company_name start_date end_date function_performed _destroy],
       studies_attributes: %i[title start_date end_date _destroy],
       ability_ids: [],
