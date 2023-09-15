@@ -1,7 +1,6 @@
 class Study < ApplicationRecord
   belongs_to :profile, inverse_of: :studies
 
-  validates :profile_id, :institution, presence: true
   validates :title, :institution, presence: true
   validates :title, length: { maximum: 255 }
   validates :institution, length: { minimum: 4, maximum: 255 }

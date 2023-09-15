@@ -52,3 +52,10 @@ end
 
 gem 'rswag'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+
+# A fast and nimble PDF generator for Ruby
+# gem 'prawn'
+
+gem "prawn", "~> 2.4"
+
+gem "matrix", "~> 0.4.2"
