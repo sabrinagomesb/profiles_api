@@ -1,4 +1,9 @@
 class ProfilesController < ApplicationController
+  def download
+    profile = Profile.find(params[:id])
+    send_data(profile.to_pdf, filename: 'profile.pdf', disposition: 'inline')
+  end
+
   def index
     @profiles = Profile.all
     render json: @profiles, include: %i[experiences studies abilities techs]
