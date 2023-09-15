@@ -525,5 +525,5 @@ servers:
 - url: "{default}/"
   variables:
     default:
-      default: localhost:3000
+      default: https://profile-api-vyah.onrender.com
       description: render.com
