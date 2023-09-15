@@ -8,4 +8,11 @@ Rails.application.routes.draw do
   resources :teches, only: %i[index show], path: 'techs'
 
   get '/abilities', to: 'abilities#index'
+
+  # routes for pdf generation
+  resources :profiles do
+    member do
+      get :download
+    end
+  end
 end
