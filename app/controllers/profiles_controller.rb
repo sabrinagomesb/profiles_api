@@ -17,14 +17,18 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
 
-    if valid_softskill_count?(profile_params[:softskill_ids])
-      if @profile.save
-        render json: @profile, include: %i[experiences studies abilities softskills techs], status: :created
-      else
-        render json: @profile.errors, status: :unprocessable_entity
-      end
-    else
+    #TODO: Refactor
+    links = params[:profile][:links]
+    @profile.links = links
+
+    unless valid_softskill_count?(profile_params[:softskill_ids])
       render json: { error: 'You must select 3 softskills' }, status: :unprocessable_entity
+    end
+
+    if @profile.save
+      render json: @profile, include: %i[experiences studies abilities softskills techs], status: :created
+    else
+      render json: @profile.errors, status: :unprocessable_entity
     end
   end
 
@@ -32,7 +36,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(
-      :name, :email, :birthdate, :phone, :links, :role, :bio, :city_id,
+      :links, :name, :email, :birthdate, :phone, :role, :bio, :city_id,
       experiences_attributes: %i[title company_name start_date end_date function_performed _destroy],
       studies_attributes: %i[title institution link start_date end_date _destroy],
       ability_ids: [],
