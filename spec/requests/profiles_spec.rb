@@ -258,7 +258,7 @@ RSpec.describe 'Profiles', type: :request do
   end
 
   path '/profiles/{id}' do
-    parameter name: 'id', in: :path, type: :string, description: 'id'
+    parameter name: 'id', in: :path, type: :integer, description: 'id'
 
     get('show profile') do
       tags ['Profiles']
@@ -268,6 +268,28 @@ RSpec.describe 'Profiles', type: :request do
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
+    end
+  end
+
+  path '/profiles/{id}/download' do
+    parameter name: 'id', in: :path, type: :integer, description: 'id'
+
+    get('download profile') do
+      tags ['Profiles']
+      response(200, 'successful') do
+        let(:id) { '123' }
+        # inform that returns a PDF file
+        produces 'application/pdf'
+
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/pdf' => {
               example: JSON.parse(response.body, symbolize_names: true)
             }
           }

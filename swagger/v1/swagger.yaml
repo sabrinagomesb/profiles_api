@@ -227,18 +227,17 @@ paths:
                     birthdate: '1991-07-27'
                     phone: '85988556677'
                     role: fullstack
-                    bio: Uma desenvolvedora fullstack que atualmente está se dedicando
-                      a Ruby on Rails, feliz com a ideia de ser fullstack
+                    bio: Uma desenvolvedora iniciante que está se dedicando para ser
+                      fullstack. Atualmente trabalhando com Ruby on Rails.
                     links:
-                    - www.github.com
-                    - www.google.com
+                    - https://github.com/sabrinagomesb
+                    - https://www.linkedin.com/in/sabrina-gomes-bezerra/
                     city_id: '678'
                     experiences_attributes:
-                    - title: Desenvolvedor Web Fullstack
-                      company_name: TechCo
-                      start_date: '2021-03-01'
-                      function_performed: Desenvolver Rails atuando na concepção de
-                        projetos
+                    - title: Desenvolvedor Backend
+                      company_name: RaroLabs
+                      start_date: '2023-09-04'
+                      function_performed: Desenvolver sistemas web com Ruby on Rails
                     - title: Estagiário de Desenvolvimento Web
                       company_name: WebTech
                       start_date: '2020-01-15'
@@ -248,11 +247,12 @@ paths:
                     - title: Bacharelado em Ciência da Computação
                       institution: Raro Academy
                       link: www.raroacademy.com.br
-                      start_date: '2018-09-01'
-                      end_date: '2022-06-30'
+                      start_date: '2022-08-01'
                     - title: Curso de Desenvolvimento Web Avançado
                       institution: Raro Academy
                       link: www.raroacademy.com.br
+                      start_date: '2023-03-05'
+                      end_date: '2023-06-12'
                     ability_ids:
                     - 1
                     - 3
@@ -329,9 +329,24 @@ paths:
       description: id
       required: true
       schema:
-        type: string
+        type: integer
     get:
       summary: show profile
+      tags:
+      - - Profiles
+      responses:
+        '200':
+          description: successful
+  "/profiles/{id}/download":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: integer
+    get:
+      summary: download profile
       tags:
       - - Profiles
       responses:
@@ -510,5 +525,5 @@ servers:
 - url: "{default}/"
   variables:
     default:
-      default: https://profile-api-vyah.onrender.com
+      default: localhost:3000
       description: render.com
