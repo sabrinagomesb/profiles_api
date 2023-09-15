@@ -55,3 +55,14 @@ end
 DESIGNER_ABILITIES.each do |skill|
   Ability.find_or_create_by(name: skill[:name], role: Profile.roles[:designer], description: skill[:description])
 end
+
+puts 'Finished inserting abilities!'
+
+puts 'Inserting softskills...'
+
+SOFTSKILLS.each do |skill|
+  Softskill.find_or_create_by(name: skill)
+end
+
+puts 'Finished inserting softskills!'
+puts 'Seed finished!'

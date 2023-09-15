@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :profiles, only: %i[create show index]
   resources :teches, only: %i[index show], path: 'techs'
   resources :abilities, only: %i[show index]
+  resources :softskills, only: %i[show index]
 end

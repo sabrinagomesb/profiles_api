@@ -90,6 +90,10 @@ paths:
                       type: array
                       items:
                         type: integer
+                    softskill_ids:
+                      type: array
+                      items:
+                        type: integer
                     tech_ids:
                       type: array
                       items:
@@ -150,6 +154,26 @@ paths:
       summary: show profile
       tags:
       - - Profiles
+      responses:
+        '200':
+          description: successful
+  "/softskills":
+    get:
+      summary: list softskills
+      tags:
+      - - Softskill
+      responses:
+        '200':
+          description: successful
+  "/softskills/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+    get:
+      summary: show tech by id
+      tags:
+      - - Softskill
       responses:
         '200':
           description: successful

@@ -1,12 +1,12 @@
 class ProfilesController < ApplicationController
   def index
     @profiles = Profile.all
-    render json: @profiles, include: %i[experiences studies abilities techs]
+    render json: @profiles, include: %i[experiences studies abilities softskills techs]
   end
 
   def show
     @profile = Profile.find(params[:id])
-    render json: @profile, include: %i[experiences studies abilities techs]
+    render json: @profile, include: %i[experiences studies abilities softskills techs]
   end
 
   def create
@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
       studies_attributes.each { |study| study[:profile_id] = @profile.id }
       @profile.studies.create(studies_attributes)
 
-      render json: @profile, include: %i[experiences studies abilities techs], status: :created
+      render json: @profile, include: %i[experiences studies abilities softskills techs], status: :created
     else
       render json: @profile.errors, status: :unprocessable_entity
     end
@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
       experiences_attributes: %i[title company_name start_date end_date function_performed _destroy],
       studies_attributes: %i[title start_date end_date _destroy],
       ability_ids: [],
+      softskill_ids: [],
       tech_ids: []
     )
   end

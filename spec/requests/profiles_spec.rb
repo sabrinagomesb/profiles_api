@@ -70,6 +70,12 @@ RSpec.describe 'Profiles', type: :request do
                               type: :integer
                             }
                           },
+                          softskill_ids: {
+                            type: :array,
+                            items: {
+                              type: :integer
+                            }
+                          },
                           tech_ids: {
                             type: :array,
                             items: {
