@@ -507,7 +507,7 @@ paths:
                     created_at: '2023-09-15T04:46:58.560Z'
                     updated_at: '2023-09-15T04:46:58.560Z'
 servers:
-- url: https://{default}/
+- url: "{default}/"
   variables:
     default:
       default: https://profile-api-vyah.onrender.com
