@@ -22,16 +22,19 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {
+        '/health': {
+          tags: ['health']
+        },
         '/profiles': {
           tags: ['profiles']
         }
       },
       servers: [
         {
-          url: 'https://{default}/',
+          url: '{default}/',
           variables: {
             default: {
-              default: 'profile-api-1qjr.onrender.com',
+              default: ENV['BASE_URL'] || 'localhost:3000',
               description: 'render.com'
             }
           }

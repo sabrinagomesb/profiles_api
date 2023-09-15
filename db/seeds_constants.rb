@@ -71,10 +71,8 @@ FRONTEND_ABILITIES = [
   { name: 'Gerenciadores de Pacotes', description: 'Uso de ferramentas como npm ou Yarn para gerenciar dependências.' },
   { name: 'Boas Práticas de Codificação', description: 'Conhecimento em padrões e melhores práticas de codificação.' },
   { name: 'Ferramentas de Desenvolvimento', description: 'Familiaridade com ferramentas de desenvolvimento, como Chrome DevTools.' },
-  { name: 'Colaboração', description: 'Capacidade de colaborar efetivamente com designers e desenvolvedores de backend.' },
   { name: 'Resolução de Problemas', description: 'Habilidade em solucionar problemas e depurar código frontend.' },
   { name: 'Conhecimento em SEO', description: 'Compreensão de otimização de mecanismos de busca para o frontend.' },
-  { name: 'Versionamento de API', description: 'Conhecimento em trabalhar com APIs e versionamento.' },
   { name: 'Gerenciamento de Estado', description: 'Experiência em gerenciamento de estado de aplicativos, como Redux ou MobX.' },
   { name: 'Animações', description: 'Habilidade em criar animações e transições suaves no frontend.' }
 ]
@@ -96,7 +94,6 @@ BACKEND_ABILITIES = [
   { name: 'Autenticação e Autorização', description: 'Implementação de sistemas de autenticação e autorização.' },
   { name: 'Documentação de API', description: 'Criação de documentação clara e completa para APIs.' },
   { name: 'Integração de Terceiros', description: 'Trabalho com integrações de APIs de terceiros.' },
-  { name: 'Resolução de Problemas', description: 'Habilidade em solucionar problemas complexos de backend.' },
   { name: 'Escalabilidade', description: 'Design de sistemas que podem escalar horizontalmente.' }
 ]
 
@@ -146,4 +143,29 @@ DESIGNER_ABILITIES = [
   { name: 'Arte Conceitual', description: 'Conhecimento em criar arte conceitual para jogos e mídia interativa.' },
   { name: 'Design de Personagens', description: 'Experiência em criar personagens e figurinos para jogos e animações.' },
   { name: 'Ferramentas de Design', description: 'Uso de ferramentas de design, como Adobe Creative Cloud, Sketch, Figma, etc.' }
+]
+
+SOFTSKILLS = [
+  'Comunicação',
+  'Trabalho em Equipe',
+  'Adaptabilidade',
+  'Resolução de Problemas',
+  'Criatividade',
+  'Pensamento Crítico',
+  'Responsabilidade',
+  'Liderança',
+  'Empatia',
+  'Flexibilidade',
+  'Gestão de Tempo',
+  'Colaboração',
+  'Atenção aos Detalhes',
+  'Organização',
+  'Iniciativa',
+  'Inteligência Emocional',
+  'Resiliência',
+  'Gestão de Conflitos',
+  'Negociação',
+  'Orientação a Resultados',
+  'Pensamento Analítico',
+  'Tomada de Decisão'
 ]
