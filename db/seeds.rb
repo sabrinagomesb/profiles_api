@@ -69,11 +69,12 @@ states.each do |state|
 end
 
 puts 'Inserting profiles...'
-cities = City.all
+
+cities = City.where(state_id: 6)
 5.times do
   Profile.find_or_create_by(
-    name: Faker::Name.name,
-    bio: Faker::Lorem.paragraph,
+    name: Faker::Name.name_with_middle,
+    bio: Faker::Lorem.paragraph_by_chars(number: 50),
     email: Faker::Internet.email,
     birthdate: Faker::Date.birthday(min_age: 18, max_age: 65),
     phone: Faker::Number.number(digits: 11),

@@ -12,6 +12,10 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params.except(:studies_attributes))
 
+    unless valid_softskill_count?(profile_params[:softskill_ids])
+      return render json: { error: 'You must select 3 softskills' }, status: :unprocessable_entity
+    end
+
     if @profile.save
       studies_attributes = profile_params[:studies_attributes]
       studies_attributes.each { |study| study[:profile_id] = @profile.id }
@@ -34,5 +38,10 @@ class ProfilesController < ApplicationController
       softskill_ids: [],
       tech_ids: []
     )
+  end
+
+  def valid_softskill_count?(softskill_ids)
+    expected_count = 3
+    softskill_ids.count == expected_count
   end
 end

@@ -18,18 +18,16 @@ class Profile < ApplicationRecord
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :studies, allow_destroy: true
 
-  validates :name, :email, :birthdate, :phone, presence: true
+  validates :name, :email, :birthdate, :phone, :bio, presence: true
 
   validates :name, length: { minimum: 4 }
   validates :email, length: { maximum: 255 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :birthdate, format: { with: /\A\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\z/, message: 'must be in the format YYYY-MM-DD' }
   validates :phone, length: { is: 11 }
-
   validates :phone, format: { with: /\A\d+\z/, message: 'must contain only numbers' }
-
-  validates :role, inclusion: { in: %w[frontend backend fullstack mobile designer qa] }
-
-  # validate email with email format regex
+  validates :role, inclusion: { in: :role }
+  validates :bio, length: { minimum: 50 }
 
   enum :role, {
     frontend: 'frontend',
