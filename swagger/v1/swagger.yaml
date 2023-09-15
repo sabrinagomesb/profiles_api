@@ -250,19 +250,19 @@ paths:
       parameters:
       - name: role
         in: query
-        enum:
-        - frontend
-        - backend
-        - fullstack
-        - mobile
-        - designer
-        - qa
-        description: Role filter (e.g., frontend, backend, fullstack, mobile, designer,
-          qa)
-        required: true
-        example: frontend
+        type: string
+        description: Role filter
         schema:
           type: string
+          enum:
+          - frontend
+          - backend
+          - fullstack
+          - mobile
+          - designer
+          - qa
+        required: true
+        example: frontend
       responses:
         '200':
           description: successful
