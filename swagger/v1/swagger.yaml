@@ -4,6 +4,26 @@ info:
   title: PROFILE API
   version: v1
 paths:
+  "/health":
+    get:
+      summary: Health check
+      tags:
+      - health
+      responses:
+        '200':
+          description: Health check
+          content:
+            application/json:
+              examples:
+                example:
+                  value:
+                    status: UP
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: UP
   "/profiles":
     get:
       summary: list profiles

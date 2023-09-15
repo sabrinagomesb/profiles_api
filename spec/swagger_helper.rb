@@ -22,6 +22,9 @@ RSpec.configure do |config|
         version: 'v1'
       },
       paths: {
+        '/health': {
+          tags: ['health']
+        },
         '/profiles': {
           tags: ['profiles']
         }
