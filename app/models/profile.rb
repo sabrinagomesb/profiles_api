@@ -29,7 +29,7 @@ class Profile < ApplicationRecord
     qa: 'qa'
   }
 
-  validates :name, :email, :birthdate, :phone, :bio, :role, presence: true
+  validates :name, :email, :birthdate, :phone, :role, :bio, presence: true
 
   validates :name, length: { minimum: 4 }
   validates :email, length: { maximum: 255 }
@@ -77,7 +77,7 @@ class Profile < ApplicationRecord
     end
 
     abilities.each do |ability|
-      if self.role.empty?
+      if self.role.nil?
         errors.add(:abilities, 'must have role to validate abilities')
       end
 
