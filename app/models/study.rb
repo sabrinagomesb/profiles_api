@@ -7,5 +7,5 @@ class Study < ApplicationRecord
   validates :start_date, format: { with: /\A\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\z/,
                                    message: 'must be in the format YYYY-MM-DD' }
   validates :end_date, format: { with: /\A\d{4}-(0?[1-9]|1[0-2])-(0?[1-9]|[12]\d|3[01])\z/,
-                                 message: 'must be in the format YYYY-MM-DD' }
+                                 message: 'must be in the format YYYY-MM-DD' }, allow_blank: true
 end
