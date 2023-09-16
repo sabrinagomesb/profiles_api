@@ -21,10 +21,6 @@ class ProfilesController < ApplicationController
     links = params[:profile][:links]
     @profile.links = links
 
-    unless valid_softskill_count?(profile_params[:softskill_ids])
-      render json: { error: 'You must select 3 softskills' }, status: :unprocessable_entity
-    end
-
     if @profile.save
       render json: @profile, include: %i[experiences studies abilities softskills techs], status: :created
     else
@@ -43,11 +39,6 @@ class ProfilesController < ApplicationController
       softskill_ids: [],
       tech_ids: []
     )
-  end
-
-  def valid_softskill_count?(softskill_ids)
-    expected_count = 3
-    softskill_ids.count == expected_count
   end
 
   def find_profile

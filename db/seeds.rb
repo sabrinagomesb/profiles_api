@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'seeds_constants'
 
-roles = Profile.roles.values
+roles = Profile.role_options.values
 
 def generate_links
   links = []

@@ -20,7 +20,16 @@ class Profile < ApplicationRecord
   accepts_nested_attributes_for :experiences, allow_destroy: true
   accepts_nested_attributes_for :studies, allow_destroy: true
 
-  validates :name, :email, :birthdate, :phone, :bio, presence: true
+  enum :role_options, {
+    frontend: 'frontend',
+    backend: 'backend',
+    fullstack: 'fullstack',
+    mobile: 'mobile',
+    designer: 'designer',
+    qa: 'qa'
+  }
+
+  validates :name, :email, :birthdate, :phone, :bio, :role, presence: true
 
   validates :name, length: { minimum: 4 }
   validates :email, length: { maximum: 255 }
@@ -30,17 +39,53 @@ class Profile < ApplicationRecord
                       message: 'must be in the format YYYY-MM-DD' }
   validates :phone, length: { is: 11 }
   validates :phone, format: { with: /\A\d+\z/, message: 'must contain only numbers' }
-  validates :role, inclusion: { in: :role }
   validates :bio, length: { minimum: 50 }
 
-  enum :role, {
-    frontend: 'frontend',
-    backend: 'backend',
-    fullstack: 'fullstack',
-    mobile: 'mobile',
-    designer: 'designer',
-    qa: 'qa'
-  }
+  validate :validate_role
+  validate :validate_softskills
+  validate :validate_techs
+  validate :validate_abilities
+
+  def validate_role
+    role = self.role
+
+    if !Profile.role_options.key?(role)
+      errors.add(:role, 'must be a valid role')
+    end
+  end
+
+  def validate_softskills
+    softskills = self.softskills
+
+    if softskills.empty? || softskills.size != 3
+      errors.add(:softskills, 'must have 3 softskills')
+    end
+  end
+
+  def validate_techs
+    techs = self.techs
+    if techs.empty?
+      errors.add(:techs, 'must have at least 1 tech')
+    end
+  end
+
+  def validate_abilities
+    abilities = self.abilities
+
+    if abilities.empty?
+      errors.add(:abilities, 'must have at least 1 ability')
+    end
+
+    abilities.each do |ability|
+      if self.role.empty?
+        errors.add(:abilities, 'must have role to validate abilities')
+      end
+
+      if ability.role != self.role
+        errors.add(:abilities, 'must have abilities according to the role')
+      end
+    end
+  end
 
   def to_pdf
     name = self.name
@@ -82,9 +127,6 @@ class Profile < ApplicationRecord
           text "<b>TELEFONE</b>: #{phone}", inline_format: true, align: :right
         end
         text "<b>DATA DE NASCIMENTO</b>: #{birthdate}", inline_format: true
-        # text "<b>CIDADE</b>: #{city}", inline_format: true
-        # text "<b>ESTADO</b>: #{state}", inline_format: true, aling: :right
-        # put city and state in the same line
         text "<b>CIDADE</b>: #{city} - #{state}", inline_format: true
       end
 
@@ -130,6 +172,7 @@ class Profile < ApplicationRecord
         end
       end
       move_down 10
+
       # start new page if the content is bigger than the page
       start_new_page if cursor < 50
 

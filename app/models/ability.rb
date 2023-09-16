@@ -2,7 +2,7 @@ class Ability < ApplicationRecord
   validates :name, presence: true
   validates :name, length: { maximum: 255 }
 
-  validates :role, inclusion: { in: Profile.roles.values }
+  validates :role, inclusion: { in: Profile.role_options.values }
 
   after_commit :create_fullstack_ability
 
